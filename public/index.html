@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="../dist/css/tailwind.css">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    <base href="/">
+</head>
+<body class="w-screen md:max-w-screen font-sans antialiased bg-gray-200 my-5 space-y-5 flex-col container mx-auto">
+
+
+    <div id="accordion" 
+        class="accordion" 
+        data-accordion-type="default"
+        data-widget-type="component"
+    >
+        <div id="accordion-item" 
+            class="accordion-item"
+            data-parent="accordion"
+        >
+            <div id="accordion-header" 
+                class="accordion-header"
+                aria-expanded="false"
+                aria-controls="accordion-body"
+                data-parent="accordion-item"
+                >
+                <h3 class="accordion-header-title">Accordion title text</h3>
+                <i data-feather="chevron-down" class="accordion-header-icon"></i>
+            </div>
+            <div id="accordion-body" 
+                class="accordion-content"
+                aria-labelledby="accordion-header"
+                data-parent="accordion-item"
+                >
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus pariatur voluptas consequuntur sequi esse impedit maxime sed labore consequatur veritatis. Corrupti libero in repudiandae animi ea ut? Officiis, tenetur saepe! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quo autem dolorem totam labore eligendi placeat, tempora aliquid officiis. Quibusdam, nisi deleniti! Dolor quos illo aspernatur deleniti delectus molestias officiis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta magni veniam earum deleniti, consequatur suscipit assumenda fuga eum facilis dolorum eius in nihil ad sint nam culpa qui ab officia!
+            </div>
+        </div>
+    </div>
+
+    <!-- <script type="text/javascript" src="../../../data/developer/tailwind-ui/src/js/index.js"></script> -->
+    <script type="text/javascript"> 
+        document.querySelectorAll('div#accordion-header').forEach((el) => {
+            el.addEventListener('click', (e) => {
+                let panelClass = e.target.nextSibling.nextElementSibling.classList;
+
+                let headerAttr = e.target.attributes[2].value;
+                
+                console.log(`Before set value : ${headerAttr}`);
+
+                togglingElementAttribute(e, 'aria-expanded', headerAttr);
+
+                console.log(`After set value : ${headerAttr}`);
+
+                console.log(`Start rotating icon`);
+
+                rotateTransfomIcon(e.target, 45, headerAttr)
+
+                console.log(`End rotating icon`);
+
+                panelClass.toggle('collapsed');
+            })
+        });
+
+        togglingElementAttribute = (element, attribute, attrRefs) => {
+
+            setValue = (value) =>  {
+                attrRefs = value;
+                element.target.setAttribute(attribute, attrRefs);
+            }
+
+            attrRefs === 'false' ? setValue('true') : setValue('false');
+
+        }
+
+        rotateTransfomIcon = (headerElement, rotateDirHandler) => {
+
+            let iconElementClasslist = headerElement.childNodes[3].classList;
+
+            iconElementClasslist.toggle(`icon-rotate-${rotateDirHandler}`);
+            
+        }
+
+        
+        // feather.replace();
+    </script>
+</body>
+</html>

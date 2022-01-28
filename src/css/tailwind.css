@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .accordion {
+        @apply overflow-hidden border border-zinc-900 border-opacity-20 shadow-md rounded-lg;
+    }
+    .accordion-header {
+        @apply px-5 py-3 border-y bg-slate-50 hover:bg-slate-100 flex flex-row justify-between items-center font-semibold text-black cursor-pointer;
+    }
+    .accordion-header-title {
+
+    }
+    .accordion-header-icon {
+        @apply -rotate-90;
+    }
+    .icon-rotate-90 {
+        @apply transition-all duration-1000 rotate-90;
+    }
+    .accordion-content {
+        @apply transition-all px-5 duration-1000 overflow-hidden max-h-0 bg-white;
+    }
+    .collapsed {
+        @apply transition-all px-5 py-3 duration-1000 max-h-screen bg-white;
+    }
+}
